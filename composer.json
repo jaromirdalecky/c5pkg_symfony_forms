@@ -19,13 +19,13 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
-        "symfony/form": "3.*",
-        "symfony/security": "3.*",
-        "symfony/validator": "3.*",
-        "symfony/expression-language": "3.*",
+        "php": ">=7.2.5",
+        "symfony/form": "^5.4",
+        "symfony/security": "^5.4",
+        "symfony/validator": "^5.4",
+        "symfony/expression-language": "^5.4",
         "egulias/email-validator": "1.2.*",
-        "jaromirdalecky/c5-twig-templates": "^0.2.0"
+        "jaromirdalecky/c5-twig-templates": "^0.3"
     },
     "autoload": {
         "psr-4" : {
