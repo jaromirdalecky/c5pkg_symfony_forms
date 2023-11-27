@@ -21,7 +21,6 @@
     "require": {
         "php": ">=7.2.5",
         "symfony/form": "^5.4",
-        "symfony/security": "^5.4",
         "symfony/validator": "^5.4",
         "symfony/expression-language": "^5.4",
         "egulias/email-validator": "1.2.*",
