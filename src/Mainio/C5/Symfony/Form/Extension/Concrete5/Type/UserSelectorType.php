@@ -2,7 +2,7 @@
 
 namespace Mainio\C5\Symfony\Form\Extension\Concrete5\Type;
 
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
@@ -35,9 +35,9 @@ class UserSelectorType extends BaseSelectorType
         // TODO: Through configurations variables we should allow the user to
         //       use also $uh->quickSelect(...) and $uh->selectMultipleUsers(...).
         $uh = \Core::make('helper/form/user_selector');
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'selector' => $uh->selectUser($view->vars["full_name"], $view->vars["value"]),
-        ));
+        ]);
     }
 
     /**

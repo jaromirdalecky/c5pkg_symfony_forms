@@ -2,10 +2,8 @@
 
 namespace Mainio\C5\SymfonyForms\Controller\Extension;
 
-use Config;
-use Controller;
 use Core;
-use Twig_Environment;
+use Twig\Environment;
 
 /**
  * @author Antti Hukkanen <antti.hukkanen@mainiotech.fi>
@@ -56,15 +54,17 @@ trait SymfonyFormsExtension
         return is_object($this->formFactory) ? $this->formFactory : null;
     }
 
-    protected function createFormFactory(Twig_Environment $twig)
+    protected function createFormFactory(Environment $twig)
     {
         $tokenManager = new \Symfony\Component\Security\Csrf\CsrfTokenManager();
 
-        $formEngine = new \Symfony\Bridge\Twig\Form\TwigRendererEngine(array('form_concrete_layout.html.twig'));
-        $formEngine->setEnvironment($twig);
-        $twig->addExtension(new \Symfony\Bridge\Twig\Extension\FormExtension(
-            new \Symfony\Bridge\Twig\Form\TwigRenderer($formEngine, $tokenManager))
-        );
+        $formEngine = new \Symfony\Bridge\Twig\Form\TwigRendererEngine(['form_concrete_layout.html.twig'], $twig);
+        $twig->addRuntimeLoader(new \Twig\RuntimeLoader\FactoryRuntimeLoader([
+            \Symfony\Component\Form\FormRenderer::class => function () use ($formEngine, $tokenManager) {
+                return new \Symfony\Component\Form\FormRenderer($formEngine, $tokenManager);
+            },
+        ]));
+        $twig->addExtension(new \Symfony\Bridge\Twig\Extension\FormExtension());
 
         // Set up the Validator component
         $validator = \Symfony\Component\Validator\Validation::createValidator();

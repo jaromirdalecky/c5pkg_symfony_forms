@@ -2,8 +2,7 @@
 
 namespace Mainio\C5\Symfony\Form\Extension\Concrete5\Type;
 
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
@@ -34,9 +33,9 @@ class PageSelectorType extends BaseSelectorType
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         $ph = \Core::make('helper/form/page_selector');
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'selector' => $ph->selectPage($view->vars["full_name"], $view->vars["value"]),
-        ));
+        ]);
     }
 
     /**

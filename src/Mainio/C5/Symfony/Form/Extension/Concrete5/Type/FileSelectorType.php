@@ -2,7 +2,6 @@
 namespace Mainio\C5\Symfony\Form\Extension\Concrete5\Type;
 
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
@@ -38,9 +37,9 @@ class FileSelectorType extends BaseSelectorType
         } elseif (strlen($view->vars["value"])) {
             $bf = File::getByID($view->vars["value"]);
         }
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'selector' => $fm->file($view->vars["id"], $view->vars["full_name"], t("Choose File"), $bf),
-        ));
+        ]);
     }
 
     /**

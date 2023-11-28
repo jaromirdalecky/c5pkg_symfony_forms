@@ -22,7 +22,7 @@ class DateTimeSelectorType extends AbstractType
 
         //$name = $builder->getFormConfig()->getName();
 
-        $parts = array('year', 'month', 'day', 'hour', 'minute');
+        $parts = ['year', 'month', 'day', 'hour', 'minute'];
         $dtTransformer = new DateTimeToFormWidgetTransformer(
             $apptz,
             $tz
@@ -44,13 +44,13 @@ class DateTimeSelectorType extends AbstractType
 
         // Change the c5 generated form names for something that the Symphony
         // forms understand. Changes e.g. form[date_dt] to form[date][dt].
-        $prefix = str_replace(array('[', ']'), array('\[', '\]'), $prefix);
+        $prefix = str_replace(['[', ']'], ['\[', '\]'], $prefix);
         $pattern = '/name="' . $prefix . '_([^"]+)\]"/';
         $selector = preg_replace($pattern, 'name="' . $name . '[\1]"', $selector);
 
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'selector' => $selector
-        ));
+        ]);
     }
 
     /**
@@ -66,12 +66,12 @@ class DateTimeSelectorType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             // Defines whether the expected value passed back to the object
             // is expected to be an array (i.e. the output fields have
             // multiple fields in them).
             'compound' => false,
-        ));
+        ]);
     }
 
 }

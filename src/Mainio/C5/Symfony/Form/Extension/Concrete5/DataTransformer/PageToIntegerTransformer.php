@@ -2,6 +2,7 @@
 
 namespace Mainio\C5\Symfony\Form\Extension\Concrete5\DataTransformer;
 
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 use Concrete\Core\Page\Page;

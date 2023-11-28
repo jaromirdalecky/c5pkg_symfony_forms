@@ -34,9 +34,9 @@ class DateSelectorType extends AbstractType
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         $dh = \Core::make('helper/form/date_time');
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'selector' => $dh->date($view->vars["full_name"], $view->vars["value"]),
-        ));
+        ]);
     }
 
     /**
@@ -52,12 +52,12 @@ class DateSelectorType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             // Defines whether the expected value passed back to the object
             // is expected to be an array (i.e. the output fields have
             // multiple fields in them).
             'compound' => false,
-        ));
+        ]);
     }
 
 }

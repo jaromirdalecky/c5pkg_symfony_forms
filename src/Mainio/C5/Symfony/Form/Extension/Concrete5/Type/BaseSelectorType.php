@@ -1,7 +1,6 @@
 <?php
 namespace Mainio\C5\Symfony\Form\Extension\Concrete5\Type;
 
-use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -35,10 +34,10 @@ abstract class BaseSelectorType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'compound' => false,
             'entity_manager' => null,
-        ));
+        ]);
     }
 
 }
