@@ -19,12 +19,11 @@
         }
     ],
     "require": {
-        "php": ">=7.2.5",
+        "php": ">=8.2",
         "symfony/form": "^5.4",
         "symfony/security-csrf": "^5.4",
         "symfony/validator": "^5.4",
         "symfony/expression-language": "^5.4",
-        "egulias/email-validator": "1.2.*",
         "jaromirdalecky/c5-twig-templates": "^0.4"
     },
     "autoload": {
